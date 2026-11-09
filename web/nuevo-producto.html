@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nuevo producto · Food Store</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/nuevo-producto.js"></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Ir al contenido</a>
+  <header class="cabecera">
+    <a class="marca" href="index.html"><span class="marca__sello" aria-hidden="true">FS</span>Food Store</a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html">La carta</a><a href="productos.html">Productos</a><a class="enlace-boton" href="nuevo-producto.html" aria-current="page">+ Nuevo producto</a>
+    </nav>
+  </header>
+  <main class="interior interior--formulario" id="contenido">
+    <a class="volver" href="productos.html">← Volver a productos</a>
+    <p class="ceja">Una nueva opción en la carta</p><h1>Sumá algo rico.</h1><p class="bajada">Completá los datos para agregar un producto al catálogo.</p>
+    <p class="estado" id="estado" role="status" aria-live="polite">Cargando categorías…</p>
+    <button class="boton" id="reintentar" type="button" hidden>Reintentar</button>
+    <form class="panel formulario" id="formulario">
+      <p class="ayuda">Los campos marcados con * son obligatorios.</p>
+      <div class="campo campo--ancho">
+        <label for="nombre">Nombre *</label><input id="nombre" name="nombre" type="text" required minlength="3" maxlength="60" placeholder="Ej. Pizza napolitana" aria-describedby="error-nombre">
+        <p class="error-campo" id="error-nombre" aria-live="polite"></p>
+      </div>
+      <div class="campo campo--ancho">
+        <label for="descripcion">Descripción</label><textarea id="descripcion" name="descripcion" maxlength="200" rows="3" placeholder="Ingredientes y detalles del producto" aria-describedby="error-descripcion"></textarea>
+        <p class="error-campo" id="error-descripcion" aria-live="polite"></p>
+      </div>
+      <div class="campo"><label for="precio">Precio en pesos *</label><input id="precio" name="precio" type="number" required min="0.01" step="any" placeholder="9200" aria-describedby="error-precio"><p class="error-campo" id="error-precio" aria-live="polite"></p></div>
+      <div class="campo"><label for="stock">Stock *</label><input id="stock" name="stock" type="number" required min="0" step="1" value="0" aria-describedby="error-stock"><p class="error-campo" id="error-stock" aria-live="polite"></p></div>
+      <div class="campo campo--ancho"><label for="categoria_id">Categoría *</label><select id="categoria_id" name="categoria_id" required disabled aria-describedby="error-categoria_id"><option value="">Elegí una categoría</option></select><p class="error-campo" id="error-categoria_id" aria-live="polite"></p></div>
+      <div class="campo campo--ancho"><label for="imagen_url">Ruta o dirección de la imagen</label><input id="imagen_url" name="imagen_url" type="text" maxlength="255" placeholder="img/pizzas.svg" aria-describedby="ayuda-imagen error-imagen_url"><p class="ayuda" id="ayuda-imagen">Usá una imagen de web/img o una dirección completa. Podés dejarlo vacío.</p><p class="error-campo" id="error-imagen_url" aria-live="polite"></p></div>
+      <div class="formulario__acciones campo--ancho"><a href="productos.html">Cancelar</a><button class="boton boton--oscuro" id="guardar" type="submit" disabled>Crear producto</button></div>
+    </form>
+  </main>
+  <footer class="pie"><a class="marca" href="index.html">Food Store<span class="punto">●</span></a><span>Un buen momento empieza con algo rico.</span><span>Joel Herrera · Programación III</span></footer>
+</body>
+</html>

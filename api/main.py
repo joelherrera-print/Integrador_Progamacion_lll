@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Session
 
 import database
@@ -21,6 +22,16 @@ async def lifespan(_app: FastAPI):
 
 
 app = FastAPI(title="Food Store API", lifespan=lifespan)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5500",
+        "http://127.0.0.1:5500",
+        "https://joelherrera-print.github.io",
+    ],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.exception_handler(service.NoEncontrado)

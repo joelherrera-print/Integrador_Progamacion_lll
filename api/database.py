@@ -1,3 +1,4 @@
+import os
 import sqlite3
 from pathlib import Path
 
@@ -13,7 +14,8 @@ def configurar_sqlite(conexion, _registro):
         conexion.create_function("casefold", 1, str.casefold, deterministic=True)
 
 
-ruta_base = Path(__file__).resolve().with_name("foodstore.db")
+ruta_base = Path(os.environ.get("FOOD_STORE_DB_PATH", Path(__file__).resolve().with_name("foodstore.db")))
+ruta_base.parent.mkdir(parents=True, exist_ok=True)
 engine = create_engine(
     URL.create("sqlite", database=str(ruta_base)),
     connect_args={"check_same_thread": False},

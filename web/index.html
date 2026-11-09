@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="La carta de Food Store. Comida hecha para disfrutar.">
+  <title>La carta · Food Store</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/catalogo.js"></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Ir al contenido</a>
+  <header class="cabecera">
+    <a class="marca" href="index.html"><span class="marca__sello" aria-hidden="true">FS</span>Food Store</a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html" aria-current="page">La carta</a>
+      <a href="productos.html">Productos</a>
+      <a class="enlace-boton" href="nuevo-producto.html">+ Nuevo producto</a>
+    </nav>
+  </header>
+  <main id="contenido">
+    <section class="hero" aria-labelledby="titulo">
+      <div>
+        <p class="ceja">Hecho para disfrutar</p>
+        <h1 id="titulo">Tu próxima<br>comida <em>favorita.</em></h1>
+        <p class="hero__texto">Pizzas al horno, hamburguesas y algo rico para acompañar. Encontrá tu próxima elección en nuestra carta.</p>
+        <a class="boton boton--oscuro" href="#carta">Explorar la carta <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero__imagen">
+        <img src="img/hamburguesas.svg" alt="Ilustración de una hamburguesa doble con queso" width="480" height="320">
+        <span class="hero__nota">Buenos ingredientes.<br>Grandes momentos.</span>
+      </div>
+    </section>
+    <section class="carta" id="carta" aria-labelledby="titulo-carta">
+      <div class="titulo-fila">
+        <div><p class="ceja">La carta completa</p><h2 id="titulo-carta">¿Qué se te antoja?</h2></div>
+        <div class="filtro"><label for="categoria">Elegí una categoría</label><select id="categoria" disabled><option value="">Todas las categorías</option></select></div>
+      </div>
+      <p class="estado" id="estado" role="status" aria-live="polite">Estamos preparando la carta…</p>
+      <button class="boton" id="reintentar" type="button" hidden>Reintentar</button>
+      <div class="grilla" id="productos"></div>
+      <nav class="paginacion" id="paginacion" aria-label="Páginas del catálogo" hidden>
+        <button class="boton boton--secundario" id="anterior" type="button">← Anterior</button>
+        <span id="pagina" aria-live="polite"></span>
+        <button class="boton boton--secundario" id="siguiente" type="button">Siguiente →</button>
+      </nav>
+    </section>
+  </main>
+  <footer class="pie"><a class="marca" href="index.html">Food Store<span class="punto">●</span></a><span>Un buen momento empieza con algo rico.</span><span>Joel Herrera · Programación III</span></footer>
+</body>
+</html>

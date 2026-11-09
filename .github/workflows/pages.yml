@@ -1,0 +1,47 @@
+name: Publicar Food Store
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v5
+      - name: Configurar la API publicada
+        env:
+          FOOD_STORE_API_URL: ${{ vars.FOOD_STORE_API_URL }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          url = os.environ.get("FOOD_STORE_API_URL", "").rstrip("/")
+          if url and urlparse(url).scheme != "https":
+              raise SystemExit("FOOD_STORE_API_URL debe ser una URL HTTPS")
+          archivo = Path("web/js/api.js")
+          fuente = archivo.read_text(encoding="utf-8-sig")
+          fuente = fuente.replace('const API_PUBLICA = "";', "const API_PUBLICA = " + json.dumps(url) + ";")
+          archivo.write_text(fuente, encoding="utf-8")
+          PY
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: web
+      - uses: actions/deploy-pages@v4
+        id: deployment

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Símbolo de Batman</title>
+  <ellipse cx="32" cy="32" rx="30" ry="23" fill="#ffda44" stroke="#111" stroke-width="3"/>
+  <path fill="#111" d="M32 48
+    C29 41 23 38 18 42
+    C18 36 14 33 9 35
+    C10 27 15 22 21 20
+    C20 25 22 28 27 28
+    L28 20 31 24H33L36 20 37 28
+    C42 28 44 25 43 20
+    C49 22 54 27 55 35
+    C50 33 46 36 46 42
+    C41 38 35 41 32 48Z"/>
+</svg>

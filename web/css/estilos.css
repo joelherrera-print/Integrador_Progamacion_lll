@@ -93,6 +93,7 @@ select, input, textarea { width: 100%; min-width: 0; border: 1px solid var(--bor
 .panel__cabecera h2 { font: 700 1.1rem Arial, sans-serif; letter-spacing: 0; }
 .contador { color: var(--gris); font-size: .8rem; }
 .tabla-contenedor { overflow-x: auto; }
+.etiqueta-dato { display: none; }
 .acciones-producto {
   display: flex;
   flex-wrap: wrap;
@@ -147,6 +148,57 @@ tbody tr:nth-child(even) { background: var(--papel); }
   .grilla { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .hero { gap: 30px; }
   .cabecera, .hero, .carta, .interior, .pie { padding-left: 26px; padding-right: 26px; }
+}
+@media (max-width: 800px) {
+  .tabla-productos {
+    display: block;
+    min-width: 0;
+  }
+  .tabla-productos thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .tabla-productos tbody {
+    display: grid;
+    gap: 12px;
+  }
+  .tabla-productos tbody tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "nombre nombre"
+      "id categoria"
+      "precio stock"
+      "acciones acciones";
+    gap: 10px 16px;
+    padding: 14px;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+  }
+  .tabla-productos td {
+    padding: 0;
+    border: 0;
+    overflow-wrap: anywhere;
+  }
+  .producto-id { grid-area: id; }
+  .producto-nombre { grid-area: nombre; font-size: 1rem; font-weight: 700; }
+  .producto-categoria { grid-area: categoria; }
+  .producto-precio { grid-area: precio; }
+  .producto-stock { grid-area: stock; }
+  .tabla-productos .producto-acciones {
+    grid-area: acciones;
+    padding-top: 10px;
+    border-top: 1px solid var(--borde);
+  }
+  .etiqueta-dato {
+    display: block;
+    color: var(--gris);
+    font-size: .72rem;
+  }
 }
 @media (max-width: 768px) {
   .cabecera { flex-direction: column; padding: 20px 16px; }

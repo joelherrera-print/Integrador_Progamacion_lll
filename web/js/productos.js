@@ -41,15 +41,30 @@ function pedirBaja(producto) {
   dialogoBaja.showModal();
 }
 
+function crearCelda(clase, texto, etiqueta) {
+  const celda = elemento("td", clase, texto);
+  celda.setAttribute("role", "cell");
+  if (etiqueta) {
+    const rotulo = elemento("span", "etiqueta-dato", etiqueta);
+    rotulo.setAttribute("aria-hidden", "true");
+    celda.prepend(rotulo);
+  }
+  return celda;
+}
+
 function crearFila(producto) {
   const fila = elemento("tr");
-  for (const dato of [producto.id, producto.nombre, producto.categoria.nombre, formatoPrecio.format(producto.precio)]) {
-    fila.append(elemento("td", "", dato));
-  }
-  const stock = elemento("td");
+  fila.setAttribute("role", "row");
+  fila.append(
+    crearCelda("producto-id", producto.id, "ID"),
+    crearCelda("producto-nombre", producto.nombre),
+    crearCelda("producto-categoria", producto.categoria.nombre, "Categoría"),
+    crearCelda("producto-precio", formatoPrecio.format(producto.precio), "Precio"),
+  );
+  const stock = crearCelda("producto-stock", undefined, "Stock");
   stock.append(elemento("span", producto.stock ? "disponible" : "sin-stock", producto.stock ? producto.stock + " unidades" : "Sin stock"));
 
-  const acciones = elemento("td");
+  const acciones = crearCelda("producto-acciones");
   const botones = elemento("div", "acciones-producto");
   const editar = elemento("a", "boton boton--secundario", "Editar");
   editar.href = "nuevo-producto.html?" + new URLSearchParams({ editar: producto.id, pagina: pagina + 1 });

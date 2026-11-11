@@ -25,7 +25,7 @@
       <p class="estado" id="estado" role="status" aria-live="polite">Cargando productos…</p>
       <button class="boton" id="reintentar" type="button" hidden>Reintentar</button>
       <div class="tabla-contenedor" tabindex="0" role="region" aria-labelledby="titulo-lista">
-        <table>
+        <table class="tabla-productos" role="table">
           <thead>
             <tr>
               <th scope="col">ID</th>
@@ -36,7 +36,7 @@
               <th scope="col">Acciones</th>
             </tr>
           </thead>
-          <tbody id="filas"></tbody>
+          <tbody id="filas" role="rowgroup"></tbody>
         </table>
       </div>
       <nav class="paginacion" id="paginacion" aria-label="Páginas de productos" hidden>

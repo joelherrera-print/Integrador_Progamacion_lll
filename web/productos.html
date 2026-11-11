@@ -21,11 +21,23 @@
     <div class="titulo-fila"><div><p class="ceja">Todo en un lugar</p><h1>Productos</h1><p class="bajada">Consultá precios, categorías y unidades disponibles.</p></div><a class="boton boton--oscuro" href="nuevo-producto.html">+ Agregar producto</a></div>
     <p class="exito" id="exito" role="status" hidden></p>
     <section class="panel" aria-labelledby="titulo-lista">
-      <div class="panel__cabecera"><h2 id="titulo-lista">Inventario de la carta</h2><span class="contador" id="total"></span></div>
+      <div class="panel__cabecera"><h2 id="titulo-lista" tabindex="-1">Inventario de la carta</h2><span class="contador" id="total"></span></div>
       <p class="estado" id="estado" role="status" aria-live="polite">Cargando productos…</p>
       <button class="boton" id="reintentar" type="button" hidden>Reintentar</button>
       <div class="tabla-contenedor" tabindex="0" role="region" aria-labelledby="titulo-lista">
-        <table><thead><tr><th scope="col">ID</th><th scope="col">Nombre</th><th scope="col">Categoría</th><th scope="col">Precio</th><th scope="col">Stock</th></tr></thead><tbody id="filas"></tbody></table>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="filas"></tbody>
+        </table>
       </div>
       <nav class="paginacion" id="paginacion" aria-label="Páginas de productos" hidden>
         <button class="boton boton--secundario" id="anterior" type="button">← Anterior</button>
@@ -34,6 +46,15 @@
       </nav>
     </section>
   </main>
+  <dialog class="panel dialogo" id="dialogo-baja" aria-labelledby="titulo-baja" aria-describedby="detalle-baja">
+    <h2 id="titulo-baja">Dar de baja producto</h2>
+    <p id="detalle-baja"></p>
+    <p class="estado estado--error" id="error-baja" role="alert" hidden></p>
+    <form method="dialog" class="dialogo__acciones">
+      <button class="boton boton--secundario" id="cancelar-baja" autofocus>Cancelar</button>
+      <button class="boton boton--peligro" id="confirmar-baja" type="button">Dar de baja</button>
+    </form>
+  </dialog>
   <footer class="pie"><a class="marca" href="index.html">Food Store<span class="punto">●</span></a><span>Un buen momento empieza con algo rico.</span><span>Joel Herrera · Programación III</span></footer>
 </body>
 </html>

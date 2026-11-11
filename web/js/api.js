@@ -52,3 +52,19 @@ export function crearProducto(datos) {
     body: JSON.stringify(datos),
   });
 }
+
+export function obtenerProducto(id) {
+  return solicitar("/productos/" + id);
+}
+
+export function actualizarProducto(id, cambios) {
+  return solicitar("/productos/" + id, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(cambios),
+  });
+}
+
+export function darDeBajaProducto(id) {
+  return solicitar("/productos/" + id, { method: "DELETE" });
+}

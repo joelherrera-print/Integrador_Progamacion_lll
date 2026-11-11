@@ -43,6 +43,15 @@ button { cursor: pointer; }
 .boton:hover:enabled, a.boton:hover { background: var(--naranja-claro); color: var(--tinta); }
 .boton--oscuro { background: var(--tinta); color: var(--blanco); }
 .boton--secundario { background: var(--blanco); }
+.boton--peligro {
+  background: var(--blanco);
+  border-color: var(--error);
+  color: var(--error);
+}
+.boton--peligro:hover:enabled {
+  background: var(--error-fondo);
+  color: var(--error);
+}
 .ceja { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .18em; color: var(--verde); }
 
 /* Catálogo */
@@ -84,6 +93,29 @@ select, input, textarea { width: 100%; min-width: 0; border: 1px solid var(--bor
 .panel__cabecera h2 { font: 700 1.1rem Arial, sans-serif; letter-spacing: 0; }
 .contador { color: var(--gris); font-size: .8rem; }
 .tabla-contenedor { overflow-x: auto; }
+.acciones-producto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.acciones-producto .boton {
+  min-height: 40px;
+  padding: 6px 13px;
+  white-space: nowrap;
+}
+.dialogo {
+  width: min(440px, calc(100% - 32px));
+  color: var(--tinta);
+}
+.dialogo::backdrop { background: rgb(0 0 0 / 45%); }
+.dialogo h2 { margin: 0 0 12px; }
+.dialogo__acciones {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
 table { width: 100%; border-collapse: collapse; min-width: 650px; font-size: .88rem; }
 th { text-transform: uppercase; font-size: .67rem; letter-spacing: .1em; color: var(--gris); font-weight: 600; }
 td, th { padding: 15px 13px; text-align: left; border-bottom: 1px solid var(--borde); }

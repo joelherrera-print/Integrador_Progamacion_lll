@@ -1,6 +1,6 @@
 import { obtenerCategorias, obtenerProductos } from "./api.js";
 import { crearPaginacion } from "./paginacion.js";
-import { cargarOpciones, crearImagen, elemento, formatoPrecio, prepararPaginacion } from "./ui.js";
+import { cargarOpciones, crearImagen, elemento, formatoPrecio, prepararPaginacion } from "./ui.js?v=2";
 
 const filtro = document.querySelector("#categoria");
 const grilla = document.querySelector("#productos");

@@ -2,6 +2,8 @@ export const formatoPrecio = new Intl.NumberFormat("es-AR", {
   style: "currency", currency: "ARS", maximumFractionDigits: 2,
 });
 
+const fotosDeEjemplo = ["hamburguesas", "pizzas", "acompanamientos", "bebidas"];
+
 export function elemento(etiqueta, clase, texto) {
   const nodo = document.createElement(etiqueta);
   if (clase) nodo.className = clase;
@@ -27,14 +29,19 @@ export function crearImagen(producto) {
     try {
       const ruta = new URL(producto.imagen_url, document.baseURI);
       if (!["http:", "https:"].includes(ruta.protocol)) return marco;
+      // Los productos de ejemplo ya guardados pueden tener la ruta de la ilustración.
+      const carpeta = new URL("img/", document.baseURI);
+      const foto = fotosDeEjemplo.find(nombre => ruta.origin === carpeta.origin
+        && ruta.pathname === carpeta.pathname + nombre + ".svg");
+      if (foto) ruta.pathname = carpeta.pathname + foto + ".webp";
       const imagen = elemento("img");
-      imagen.alt = producto.nombre;
+      imagen.alt = foto ? "" : producto.nombre;
       imagen.loading = "lazy";
       imagen.width = 480;
       imagen.height = 320;
       imagen.addEventListener("load", () => { sinImagen.hidden = true; });
       imagen.addEventListener("error", () => { imagen.remove(); sinImagen.hidden = false; });
-      imagen.src = producto.imagen_url;
+      imagen.src = ruta.href;
       marco.append(imagen);
     } catch {
       return marco;

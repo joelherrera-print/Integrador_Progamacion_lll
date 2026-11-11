@@ -59,9 +59,9 @@ button { cursor: pointer; }
 .hero h1 { margin: 18px 0 22px; font-size: clamp(3.5rem, 6vw, 5.8rem); }
 .hero h1 em { color: var(--verde); font-weight: 400; }
 .hero__texto { max-width: 430px; color: var(--gris); margin-bottom: 26px; font-size: .95rem; }
-.hero__imagen { position: relative; border-radius: 45% 45% 8px 8px; padding: 46px 10px 66px; background: var(--naranja-claro); border: 1px solid var(--borde); overflow: hidden; }
-.hero__imagen img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
-.hero__nota { position: absolute; bottom: 23px; right: 26px; color: var(--verde); font: italic 1.15rem/1.2 Georgia, serif; text-align: right; transform: rotate(-6deg); }
+.hero__imagen { border-radius: 20px; background: var(--naranja-claro); border: 1px solid var(--borde); overflow: hidden; }
+.hero__imagen img { display: block; width: 100%; height: auto; }
+.hero__nota { display: block; padding: 12px 20px; color: var(--verde); font: italic 1.05rem/1.2 Georgia, serif; text-align: right; }
 .carta { max-width: 1360px; margin: auto; padding: 42px 48px 72px; border-top: 1px solid var(--borde); scroll-margin-top: 20px; }
 .titulo-fila { display: flex; align-items: center; justify-content: space-between; gap: 25px; margin-bottom: 26px; }
 .titulo-fila h2 { margin-top: 8px; }
@@ -206,8 +206,7 @@ tbody tr:nth-child(even) { background: var(--papel); }
   .cabecera nav .enlace-boton { padding: 8px 14px; }
   .hero { grid-template-columns: 1fr 1fr; padding: 35px 20px; gap: 20px; }
   .hero h1 { font-size: clamp(2.5rem, 7vw, 3.8rem); }
-  .hero__imagen { padding: 24px 0 60px; }
-  .hero__nota { right: 14px; font-size: .85rem; }
+  .hero__nota { padding: 10px 14px; font-size: .85rem; }
   .grilla { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .titulo-fila { align-items: flex-start; flex-direction: column; }
   .filtro { width: 100%; }
@@ -217,8 +216,7 @@ tbody tr:nth-child(even) { background: var(--papel); }
 @media (max-width: 480px) {
   .hero { grid-template-columns: 1fr; }
   .hero h1 { font-size: 3.7rem; }
-  .hero__imagen { max-width: 350px; width: 100%; margin: 10px auto; padding-bottom: 45px; }
-  .hero__imagen img { max-height: 200px; object-fit: contain; }
+  .hero__imagen { max-width: 350px; width: 100%; margin: 10px auto; }
   .grilla { grid-template-columns: 1fr; }
   .formulario { grid-template-columns: minmax(0, 1fr); }
   .paginacion { gap: 8px; }
